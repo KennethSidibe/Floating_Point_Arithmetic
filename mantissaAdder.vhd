@@ -6,10 +6,10 @@ use IEEE.std_logic_1164.all;
 
 entity mantissaAdder is
     port (
-      mantissaA : in std_logic_vector(22 downto 0);
-      mantissaB : in std_logic_vector(22 downto 0);
+      mantissaA : in std_logic_vector(7 downto 0);
+      mantissaB : in std_logic_vector(7 downto 0);
   
-      mantissaSum: out std_logic_vector(22 downto 0)
+      mantissaSum: out std_logic_vector(7 downto 0)
   
     );
   end mantissaAdder;

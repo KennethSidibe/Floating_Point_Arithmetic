@@ -7,9 +7,9 @@ use IEEE.std_logic_1164.all;
 entity exponentSubstractor is
     port (
 
-        exponentA : in std_logic_vector(22 downto 0);
-        exponentB : in std_logic_vector(22 downto 0);
-        exponentDifference: out std_logic_vector(22 downto 0)
+        exponentA : in std_logic_vector(6 downto 0);
+        exponentB : in std_logic_vector(6 downto 0);
+        exponentDifference: out std_logic_vector(6 downto 0)
     );
   end exponentSubstractor;
   

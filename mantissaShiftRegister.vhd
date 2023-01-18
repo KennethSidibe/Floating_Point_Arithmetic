@@ -6,10 +6,10 @@ use IEEE.std_logic_1164.all;
 
 entity mantissaShiftRegister is
   port (
-    nCounter : in std_logic_vector(22 downto 0);
-    mantissaIn : in std_logic_vector(22 downto 0);
+    nCounter : in std_logic_vector(2 downto 0);
+    mantissaIn : in std_logic_vector(7 downto 0);
 
-    mantissaOut: out std_logic_vector(22 downto 0)
+    mantissaOut: out std_logic_vector(7 downto 0)
 
   );
 end mantissaShiftRegister;
