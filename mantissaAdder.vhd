@@ -2,16 +2,16 @@
 -- this entity must be 9 bits 
 
 LIBRARY ieee;
-USE ieee.std_logic_1164;
+USE ieee.std_logic_1164.ALL;
 
-ENTITY nineBitAdder IS
+ENTITY mantissaAdder IS
 PORT(
     A,B :           IN STD_LOGIC_VECTOR(8 DOWN TO 0);
     carryOut :      OUT STD_LOGIC;
     sum :           OUT STD_LOGIC_VECTOR(8 DOWN TO 0));
 END nineBitAdder;
 
-ARCHITECTURE RTL OF nineBitAdder IS
+ARCHITECTURE RTL OF mantissaAdder IS
     SIGNAL  in_Sum, in_CarryOut : STD_LOGIC_VECTOR(8 DOWN TO 0);
     SIGNAL gnd : STD_LOGIC;
 
