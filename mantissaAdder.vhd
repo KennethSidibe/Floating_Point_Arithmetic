@@ -9,7 +9,7 @@ PORT(
     A,B :           IN STD_LOGIC_VECTOR(8 DOWN TO 0);
     carryOut :      OUT STD_LOGIC;
     sum :           OUT STD_LOGIC_VECTOR(8 DOWN TO 0));
-END nineBitAdder;
+END mantissaAdder;
 
 ARCHITECTURE RTL OF mantissaAdder IS
     SIGNAL  in_Sum, in_CarryOut : STD_LOGIC_VECTOR(8 DOWN TO 0);
