@@ -2,6 +2,8 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
+-- Cascading Comparator entity block used for N bit comparison
+
 entity cascadingComparator is
 
 	port(
@@ -50,8 +52,6 @@ architecture rtl of cascadingComparator is
         isInferior <= xInferiorToBSignal or (xEqualToBSignal and xInferiorToB);
         isSuperior <= xSuperiorToBSignal or (xEqualToBSignal and xSuperiorToB);
         isEqual <= xEqualToBSignal and xEqualToB;
-
-        
 
 
 end rtl ; -- rtl
