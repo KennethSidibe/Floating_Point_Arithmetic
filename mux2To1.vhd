@@ -5,8 +5,8 @@ entity mux2To1 is
         port(
         
             selector : in std_logic;
-            input1 : in std_logic;
-            input2: in std_logic;
+            input0 : in std_logic;
+            input1: in std_logic;
             output : out std_logic
         
         );
@@ -16,6 +16,6 @@ architecture rtl of mux2To1 is
 
 	begin
 	
-		output <= (not(selector) and input1 ) or ( selector and input2);
+		output <= (not(selector) and input0 ) or ( selector and input1);
 		
 end architecture rtl;
