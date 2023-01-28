@@ -22,6 +22,7 @@ architecture rtl of loadCounter is
     signal q0Signal, q1Signal, q2Signal, q3Signal : std_logic;
     signal q0BarSignal, q1BarSignal, q2BarSignal, q3BarSignal : std_logic;
     signal d0Signal, d1Signal, d2Signal, d3Signal : std_logic;
+    signal d0BarSignal, d1BarSignal, d2BarSignal, d3BarSignal : std_logic;
 
     component mux2To1 is 
 
@@ -48,31 +49,36 @@ architecture rtl of loadCounter is
 
     begin
 
+        d0BarSignal <= not(dInput(0));
+        d1BarSignal <= not(dInput(1));
+        d2BarSignal <= not(dInput(2));
+        d3BarSignal <= not(dInput(3));
+
         mux0 : mux2To1 port map(
             selector => load,
             input0 => q0XorEnable,
-            input1 => dInput(0),
+            input1 => d0BarSignal,
             output => d0Signal
         );
 
         mux1 : mux2To1 port map(
             selector => load,
             input0 => q1XorEnable,
-            input1 => dInput(1),
+            input1 => d1BarSignal,
             output => d1Signal
         );
 
         mux2 : mux2To1 port map(
             selector => load,
             input0 => q2XorEnable,
-            input1 => dInput(2),
+            input1 => d2BarSignal,
             output => d2Signal
         );
 
         mux3 : mux2To1 port map(
             selector => load,
             input0 => q3XorEnable,
-            input1 => dInput(3),
+            input1 => d3BarSignal,
             output => d3Signal
         );
 
@@ -106,10 +112,10 @@ architecture rtl of loadCounter is
         );
 
         -- QOutput assignment 
-        qOutput(0) <= q0Signal;
-        qOutput(1) <= q1Signal;
-        qOutput(2) <= q2Signal;
-        qOutput(3) <= q3Signal;
+        qOutput(0) <= q0BarSignal;
+        qOutput(1) <= q1BarSignal;
+        qOutput(2) <= q2BarSignal;
+        qOutput(3) <= q3BarSignal;
 
         -- enable 
         q0XorEnable <= enable xor q0Signal;
