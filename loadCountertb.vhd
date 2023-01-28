@@ -59,10 +59,10 @@ architecture rtl of loadCountertb is
 
                 load <= '1', '0' after 40 ns;
 
-                enable <= '1', '0' after 600 ns;
+                enable <= '1', '0' after 300 ns;
                 dInput <= "1110";
 
-                wait for 600 ns;
+                wait for 300 ns;
                 
                 -- TURN OFF
                 enable <= '0';

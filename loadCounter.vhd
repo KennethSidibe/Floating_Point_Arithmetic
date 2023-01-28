@@ -23,6 +23,8 @@ architecture rtl of loadCounter is
     signal q0BarSignal, q1BarSignal, q2BarSignal, q3BarSignal : std_logic;
     signal d0Signal, d1Signal, d2Signal, d3Signal : std_logic;
     signal d0BarSignal, d1BarSignal, d2BarSignal, d3BarSignal : std_logic;
+    signal reset : std_logic;
+    signal enableAndReset : std_logic;
 
     component mux2To1 is 
 
@@ -82,7 +84,6 @@ architecture rtl of loadCounter is
             output => d3Signal
         );
 
-
         dFlip0 : dFF_2 port map (
             i_d	=> d0Signal,
             i_clock	=> clock,
@@ -118,8 +119,8 @@ architecture rtl of loadCounter is
         qOutput(3) <= q3BarSignal;
 
         -- enable 
-        q0XorEnable <= enable xor q0Signal;
-        q0AndEnable <= enable and q0Signal;
+        q0XorEnable <= enableAndReset xor q0Signal;
+        q0AndEnable <= enableAndReset and q0Signal;
 
         q1XorEnable <= q0AndEnable xor q1Signal;
         q1AndEnable <= q0AndEnable and q1Signal;
@@ -131,5 +132,9 @@ architecture rtl of loadCounter is
         q3AndEnable <= q2AndEnable and q3Signal;
 
         zOutput <= q3AndEnable;
+
+        -- reset
+        reset <= q2AndEnable and q3Signal;
+        enableAndReset <= enable and not(reset);
 
 end rtl ; -- rtl
