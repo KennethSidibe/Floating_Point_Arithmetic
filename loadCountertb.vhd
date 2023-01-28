@@ -9,7 +9,7 @@ architecture rtl of loadCountertb is
     signal load, clock, enable :std_logic := '0';
     signal zOutput : std_logic;
     signal  qOutput, dInput: std_logic_vector(3 downto 0);
-    constant T : time := 20 ns;
+    constant T : time := 5 ns;
 
     component loadCounter is 
 
@@ -54,26 +54,16 @@ architecture rtl of loadCountertb is
             begin
 
                 -- let circuit stabilize
-                wait for 100 ns;
+                wait for 10 ns;
                 -- STABILIZE
 
-                load <= '1', '0' after 40 ns;
-
-                enable <= '1', '0' after 300 ns;
+                load <= '1', '0' after 10 ns;
                 dInput <= "1110";
+                enable <= '0', '1' after 10 ns, '0' after 100 ns;
 
-                wait for 300 ns;
-                
-                -- TURN OFF
-                enable <= '0';
-                load <= '0';
-                -- TURN OFF
-
-
-                -- wait after last input
-                wait for 100 ns;
                 
                 
+                -- End of simulation
                 wait;
 
         end process;

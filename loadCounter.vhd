@@ -135,6 +135,6 @@ architecture rtl of loadCounter is
 
         -- reset
         reset <= q2AndEnable and q3Signal;
-        enableAndReset <= enable and not(reset);
+        enableAndReset <= enable;
 
 end rtl ; -- rtl
