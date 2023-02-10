@@ -4,9 +4,9 @@ use IEEE.std_logic_1164.all;
 
 entity rightShiftUnit is
   port (
-    input : in std_logic_vector(7 downto 0);
+    input : in std_logic_vector(8 downto 0);
 
-    output: out std_logic_vector(7 downto 0)
+    output: out std_logic_vector(8 downto 0)
   );
 end rightShiftUnit;
 
@@ -14,7 +14,8 @@ architecture rtl of rightShiftUnit is
 
     begin
 
-        output(7) <= '0';
+        output(8) <= '0';
+        output(7) <= input(8);
         output(6) <= input(7);
         output(5) <= input(6);
         output(4) <= input(5);

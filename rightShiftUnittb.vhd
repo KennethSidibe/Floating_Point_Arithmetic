@@ -10,13 +10,13 @@ architecture rtl of rightShiftUnittb is
     component rightShiftUnit is 
 
         port (
-            input : in std_logic_vector(7 downto 0);
-            output: out std_logic_vector(7 downto 0)
+            input : in std_logic_vector(8 downto 0);
+            output: out std_logic_vector(8 downto 0)
         );
 
     end component rightShiftUnit;
     
-    signal input, output : std_logic_vector(7 downto 0);
+    signal input, output : std_logic_vector(8 downto 0);
 
     begin
 
@@ -29,19 +29,19 @@ architecture rtl of rightShiftUnittb is
 
             begin
 
-                input <= "01001101";
+                input <= "010011001";
 
                 wait for 20 ns;
 
-                input <= "11111111";
+                input <= "111111111";
 
                 wait for 20 ns;
 
-                input <= "00000001";
+                input <= "000000001";
 
                 wait for 20 ns;
 
-                input <= "10000000";
+                input <= "100000000";
 
                 wait for 20 ns;
 
