@@ -1,0 +1,33 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY enARDFlipFlop_2 IS 
+    PORT (
+        reset : IN STD_LOGIC;
+        clock : IN STD_LOGIC;
+        inD : IN STD_LOGIC;
+        enable : IN STD_LOGIC;
+        outQ, notOutQ : OUT STD_LOGIC);
+END enARDFlipFlop_2;
+
+ARCHITECTURE RTL OF enARDFlipFlop_2 IS 
+    SIGNAL in_Q : STD_LOGIC;
+
+BEGIN 
+
+oneBitRegister : 
+PROCESS(reset,clock)
+BEGIN 
+    IF ( reset = '0') THEN
+        in_Q <= '0';
+    
+    ELSIF (clock 'EVENT and clock = '1') THEN
+        IF (enable = '1') THEN
+            in_Q <= inD;
+        END IF;
+    END IF;
+END PROCESS oneBitRegister;
+
+    outQ <= in_Q;
+    notOutQ <= not(in_Q);
+END RTL; 
