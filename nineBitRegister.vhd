@@ -3,106 +3,118 @@ USE ieee.std_logic_1164.ALL;
 
 ENTITY nineBitRegister IS 
     PORT(
-        reset,load : IN STD_LOGIC;
+        reset : std_logic;
+        enable : IN STD_LOGIC;
         clock : IN STD_LOGIC;
         input : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
         output : OUT STD_LOGIC_VECTOR(8 DOWNTO 0));
 END nineBitRegister;
 
 ARCHITECTURE RTL OF nineBitRegister IS
+
     SIGNAL in_input, inNotInput : STD_LOGIC_VECTOR(8 DOWNTO 0);
 
-    COMPONENT enARDFlipFlop_2
+    COMPONENT enardFF_2
     PORT(
-            reset : IN STD_LOGIC;
-            clock : IN STD_LOGIC;
-            inD : IN STD_LOGIC;
-            enable : IN STD_LOGIC;
-            outQ, notOutQ : OUT STD_LOGIC);
+        i_resetBar	: IN	STD_LOGIC;
+		i_d		: IN	STD_LOGIC;
+		i_enable	: IN	STD_LOGIC;
+		i_clock		: IN	STD_LOGIC;
+		o_q, o_qBar	: OUT	STD_LOGIC
+        );
     END COMPONENT;
-BEGIN 
 
-bit8 : enARDFlipFlop_2
-    PORT MAP(
-            reset => reset,
-            clock => clock,
-            inD => input(8),
-            enable => load,
-            outQ => in_input(8),
-            notOutQ => inNotInput(8));
+    BEGIN 
 
-bit7 : enARDFlipFlop_2
-    PORT MAP(
-            reset => reset,
-            clock => clock,
-            inD => input(7),
-            enable => load,
-            outQ => in_input(7),
-            notOutQ => inNotInput(7));
+    bit8 : enardFF_2
+        PORT MAP(
+                i_resetBar => reset,
+                i_clock => clock,
+                i_d => input(8),
+                i_enable => enable,
+                o_q => in_input(8),
+                o_qBar => inNotInput(8));
 
-bit6 : enARDFlipFlop_2
-    PORT MAP(
-            reset => reset,
-            clock => clock,
-            inD => input(6),
-            enable => load,
-            outQ => in_input(6),
-            notOutQ => inNotInput(6));
+    bit7 : enardFF_2
+        PORT MAP(
+                i_resetBar => reset,
+                i_clock => clock,
+                i_d => input(7),
+                i_enable => enable,
+                o_q => in_input(7),
+                o_qBar => inNotInput(7));
 
-bit5 : enARDFlipFlop_2
-    PORT MAP(
-            reset => reset,
-            clock => clock,
-            inD => input(5),
-            enable => load,
-            outQ => in_input(5),
-            notOutQ => inNotInput(5));
+    bit6 : enardFF_2
+        PORT MAP(
+                i_resetBar => reset,
+                i_clock => clock,
+                i_d => input(6),
+                i_enable => enable,
+                o_q => in_input(6),
+                o_qBar => inNotInput(6));
 
-bit4 : enARDFlipFlop_2
-    PORT MAP(
-            reset => reset,
-            clock => clock,
-            inD => input(4),
-            enable => load,
-            outQ => in_input(4),
-            notOutQ => inNotInput(4));
+    bit5 : enardFF_2
+        PORT MAP(
+                i_resetBar => reset,
+                i_clock => clock,
+                i_d => input(5),
+                i_enable => enable,
+                o_q => in_input(5),
+                o_qBar => inNotInput(5));
 
-bit3 : enARDFlipFlop_2
-    PORT MAP(
-            reset => reset,
-            clock => clock,
-            inD => input(3),
-            enable => load,
-            outQ => in_input(3),
-            notOutQ => inNotInput(3));
+    bit4 : enardFF_2
+        PORT MAP(
+                i_resetBar => reset,
+                i_clock => clock,
+                i_d => input(4),
+                i_enable => enable,
+                o_q => in_input(4),
+                o_qBar => inNotInput(4));
 
-bit2 : enARDFlipFlop_2
-    PORT MAP(
-            reset => reset,
-            clock => clock,
-            inD => input(2),
-            enable => load,
-            outQ => in_input(2),
-            notOutQ => inNotInput(2));
+    bit3 : enardFF_2
+        PORT MAP(
+                i_resetBar => reset,
+                i_clock => clock,
+                i_d => input(3),
+                i_enable => enable,
+                o_q => in_input(3),
+                o_qBar => inNotInput(3));
 
-bit1 : enARDFlipFlop_2
-    PORT MAP(
-            reset => reset,
-            clock => clock,
-            inD => input(1),
-            enable => load,
-            outQ => in_input(1),
-            notOutQ => inNotInput(1));
+    bit2 : enardFF_2
+        PORT MAP(
+                i_resetBar => reset,
+                i_clock => clock,
+                i_d => input(2),
+                i_enable => enable,
+                o_q => in_input(2),
+                o_qBar => inNotInput(2));
 
-bit0 : enARDFlipFlop_2
-    PORT MAP(
-            reset => reset,
-            clock => clock,
-            inD => input(0),
-            enable => load,
-            outQ => in_input(0),
-            notOutQ => inNotInput(0));
+    bit1 : enardFF_2
+        PORT MAP(
+                i_resetBar => reset,
+                i_clock => clock,
+                i_d => input(1),
+                i_enable => enable,
+                o_q => in_input(1),
+                o_qBar => inNotInput(1));
 
-    output <= in_input;
+    bit0 : enardFF_2
+        PORT MAP(
+                i_resetBar => reset,
+                i_clock => clock,
+                i_d => input(0),
+                i_enable => enable,
+                o_q => in_input(0),
+                o_qBar => inNotInput(0));
+
+        output(0) <= in_input(0);
+        output(1) <= in_input(1);
+        output(2) <= in_input(2);
+        output(3) <= in_input(3);
+        output(4) <= in_input(4);
+        output(5) <= in_input(5);
+        output(6) <= in_input(6);
+        output(7) <= in_input(7);
+        output(8) <= in_input(8);
 
 END RTL;
