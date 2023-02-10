@@ -12,19 +12,20 @@ architecture rlt of nShifter is
 
     component loadCounter is 
 
-        port (
-            load : in std_logic;
-            clock : in std_logic;
-            dInput : in std_logic_vector(3 downto 0);
-            enable : in std_logic;
+    port (
+        load            : in std_logic;
+        clock           : in std_logic;
+        dInput          : in std_logic_vector(3 downto 0);
+        enable          : in std_logic;
 
-            zOutput : out std_logic;
-            qOutput : out std_logic_vector(3 downto 0)
-        );
+        zOutput         : out std_logic;
+        shiftSignal     : out std_logic;
+        qOutput         : out std_logic_vector(3 downto 0)
+    );
 
-    end component loadCounter;
+end component loadCounter;
 
-    
+
     signal 
 
 end rlt ; -- rlt
