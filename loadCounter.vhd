@@ -26,6 +26,7 @@ architecture rtl of loadCounter is
     signal d0BarSignal, d1BarSignal, d2BarSignal, d3BarSignal : std_logic;
     signal reset : std_logic;
     signal enableAndReset : std_logic;
+    signal countRestart : std_logic;
 
     component mux2To1 is 
 
@@ -133,7 +134,8 @@ architecture rtl of loadCounter is
         q3AndEnable <= q2AndEnable and q3Signal;
 
         zOutput <= q3AndEnable;
-        shiftSignal <= not(q3AndEnable);
+        shiftSignal <= not(countRestart);
+        countRestart <= q0BarSignal and q1BarSignal and q3BarSignal and q3BarSignal;
 
         -- reset
         reset <= q2AndEnable and q3Signal;
