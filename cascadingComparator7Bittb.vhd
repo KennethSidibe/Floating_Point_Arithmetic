@@ -50,6 +50,16 @@ architecture rtl of cascadingComparator7Bittb is
 
                 wait for 20 ns;
 
+                x <= "0000110";
+                y <= "0000100";
+
+                wait for 20 ns;
+
+                x <= "0010100";
+                y <= "0100100";
+
+                wait for 20 ns;
+
                 wait;
 
         end process;
