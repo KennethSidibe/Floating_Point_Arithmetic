@@ -58,8 +58,8 @@ architecture rtl of cascadingComparator8Bit is
             xSuperiorToB => logicalZero,
             xEqualToB => logicalOneForEqual,
 
-            isSuperior => xInferiorToBOutSignal,
-            isInferior => xSuperiorToBOutSignal,
+            isSuperior => xSuperiorToBOutSignal,
+            isInferior => xInferiorToBOutSignal,
             isEqual => xEqualToBOutSignal
         );
 

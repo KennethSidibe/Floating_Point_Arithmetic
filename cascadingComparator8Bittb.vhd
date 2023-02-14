@@ -50,6 +50,11 @@ architecture rtl of cascadingComparator8Bittb is
 
                 wait for 20 ns;
 
+                x <= "00000110";
+                y <= "00000100";
+
+                wait for 20 ns;
+
                 wait;
 
         end process;
