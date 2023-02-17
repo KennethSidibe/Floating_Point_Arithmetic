@@ -7,7 +7,8 @@ ENTITY nineBitRegister IS
         enable : IN STD_LOGIC;
         clock : IN STD_LOGIC;
         input : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
-        output : OUT STD_LOGIC_VECTOR(8 DOWNTO 0));
+        output : OUT STD_LOGIC_VECTOR(8 DOWNTO 0)
+        );
 END nineBitRegister;
 
 ARCHITECTURE RTL OF nineBitRegister IS
